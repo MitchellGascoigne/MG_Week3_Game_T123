@@ -16,10 +16,9 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
-
     //CAR SETUP
 
-      [Space(20)]
+    [Space(20)]
       //[Header("CAR SETUP")]
       [Space(10)]
       [Range(20, 190)]
@@ -770,5 +769,4 @@ public class PrometeoCarController : MonoBehaviour
         driftingAxis = 0f;
       }
     }
-
 }
