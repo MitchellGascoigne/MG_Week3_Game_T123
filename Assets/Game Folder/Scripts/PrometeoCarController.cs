@@ -16,6 +16,11 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
+
+    //SpawnManager
+    [SerializeField]
+    public MG_SpawnManager spawnManager;
+
     //CAR SETUP
 
     [Space(20)]
@@ -768,5 +773,9 @@ public class PrometeoCarController : MonoBehaviour
 
         driftingAxis = 0f;
       }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        spawnManager.SpawnTriggerEntered();
     }
 }
