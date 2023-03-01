@@ -21,6 +21,11 @@ public class PrometeoCarController : MonoBehaviour
     [SerializeField]
     public MG_SpawnManager spawnManager;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        spawnManager.SpawnTriggerEntered();
+    }
+
     //CAR SETUP
 
     [Space(20)]
@@ -773,9 +778,5 @@ public class PrometeoCarController : MonoBehaviour
 
         driftingAxis = 0f;
       }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        spawnManager.SpawnTriggerEntered();
     }
 }
