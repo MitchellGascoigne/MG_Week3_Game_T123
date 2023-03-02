@@ -16,9 +16,6 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
-    public float speed = 5;
-
-
     //CAR SETUP
 
     [Space(20)]
@@ -268,10 +265,10 @@ public class PrometeoCarController : MonoBehaviour
     void Update()
     {
 
-      //CAR DATA
+        //CAR DATA
 
-      // We determine the speed of the car.
-      carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+        // We determine the speed of the car.
+        carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
       // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
       localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
       // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
@@ -290,9 +287,9 @@ public class PrometeoCarController : MonoBehaviour
       A (turn left), D (turn right) or Space bar (handbrake).
       */
       if (useTouchControls && touchControlsSetup){
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        
 
-            if (throttlePTI.buttonPressed){
+        if (throttlePTI.buttonPressed){
           CancelInvoke("DecelerateCar");
           deceleratingCar = false;
           GoForward();
@@ -329,17 +326,16 @@ public class PrometeoCarController : MonoBehaviour
         }
 
       }else{
-
-        if(Input.GetKey(KeyCode.W)){
-          CancelInvoke("DecelerateCar");
-          deceleratingCar = false;
-          GoForward();
-        }
-        if(Input.GetKey(KeyCode.S)){
-          CancelInvoke("DecelerateCar");
-          deceleratingCar = false;
-          GoReverse();
-        }
+        //if(Input.GetKey(KeyCode.W)){
+        // CancelInvoke("DecelerateCar");
+        // deceleratingCar = false;
+        //  GoForward();
+        //}
+        //if(Input.GetKey(KeyCode.S)){
+        // CancelInvoke("DecelerateCar");
+        // deceleratingCar = false;
+        // GoReverse();
+        //}
 
         if(Input.GetKey(KeyCode.A)){
           TurnLeft();
@@ -371,6 +367,11 @@ public class PrometeoCarController : MonoBehaviour
 
       // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
       AnimateWheelMeshes();
+
+        // Constant x movement 
+        CancelInvoke("DecelerateCar");
+        deceleratingCar = false;
+        GoForward();
 
     }
 
