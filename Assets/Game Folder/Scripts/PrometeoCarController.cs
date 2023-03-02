@@ -16,6 +16,8 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
+    public float speed = 5;
+
 
     //CAR SETUP
 
@@ -288,8 +290,9 @@ public class PrometeoCarController : MonoBehaviour
       A (turn left), D (turn right) or Space bar (handbrake).
       */
       if (useTouchControls && touchControlsSetup){
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
-        if(throttlePTI.buttonPressed){
+            if (throttlePTI.buttonPressed){
           CancelInvoke("DecelerateCar");
           deceleratingCar = false;
           GoForward();
