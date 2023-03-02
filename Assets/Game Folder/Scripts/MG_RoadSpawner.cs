@@ -5,24 +5,29 @@ using UnityEngine;
 
 public class MG_RoadSpawner : MonoBehaviour
 {
-
-    public List<GameObject> Roads;
+    public List<GameObject> originalRoads;
+    public List<GameObject> activeRoads;
     private float offset = 27.95f;
     // Start is called before the first frame update
     void Start()
     {
-        if(Roads != null && Roads.Count > 0)
+
+
+        if(activeRoads != null && activeRoads.Count > 0)
         {
-            Roads = Roads.OrderBy(r => r.transform.position.z).ToList();
+            activeRoads = activeRoads.OrderBy(r => r.transform.position.x).ToList();
         }
     }
 
     public void MoveRoad()
     {
-        GameObject movedRoad = Roads[0];
-        Roads.Remove(movedRoad);
-        float newZ = Roads[Roads.Count- 1].transform.position.z + offset;
-        movedRoad.transform.position = new Vector3(0, 0, newZ);
-        Roads.Add(movedRoad);
+        Debug.Log("MoveRoad() called from " + gameObject.name);
+        GameObject movedRoad = activeRoads[0];
+        activeRoads.Remove(movedRoad);
+        float newX = activeRoads[activeRoads.Count- 1].transform.position.x + offset;
+        movedRoad.transform.position = new Vector3(newX, 0, 0);
+        activeRoads.Add(movedRoad);
     }
 }
+
+// when reset active road = original roads

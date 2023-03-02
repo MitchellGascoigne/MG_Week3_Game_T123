@@ -17,15 +17,6 @@ using UnityEngine.UI;
 public class PrometeoCarController : MonoBehaviour
 {
 
-    //SpawnManager
-    [SerializeField]
-    public MG_SpawnManager spawnManager;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        spawnManager.SpawnTriggerEntered();
-    }
-
     //CAR SETUP
 
     [Space(20)]
